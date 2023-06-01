@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymleaf.org"
+  th:replace="base::layout(~{::section})"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <div class="my-card mt-1">
+              <div class="container text-center">
+                <img
+                  style="width: 80px"
+                  th:src="@{/img/membership.png}"
+                  alt=""
+                />
+              </div>
+              <h1 class="text-center">Register Here!!</h1>
+              <form
+                action=""
+                th:action="@{/do_register}"
+                method="post"
+                th:object="${user}"
+              >
+                <!-- name  -->
+                <div class="form-group">
+                  <label for="name_field">Your Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    id="name_field"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter here"
+                    required
+                    th:value="${user.name}"
+                  />
+                </div>
+                <!-- email  -->
+                <div class="form-group">
+                  <label for="email_field">Your Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    class="form-control"
+                    id="email_field"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter here"
+                    required
+                    th:value="${user.email}"
+                  />
+                </div>
+                <!-- password -->
+                <div class="form-group">
+                  <label for="password_field">Your Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    id="password_field"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter here"
+                    required
+                  />
+                </div>
+                <!-- about  -->
+                <div class="form-group">
+                  <label for="about_field">About You</label>
+                  <textarea
+                    name="about"
+                    class="form-control"
+                    id="about_field"
+                    rows="6"
+                    placeholder="Enter Something about you"
+                    th:value="${user.about}"
+                  ></textarea>
+                </div>
+
+                <!--terms and condition-->
+                <div class="form-group form-check text-center">
+                  <input
+                    type="checkbox"
+                    name="agreement"
+                    class="form-check-input"
+                    id="agreement"
+                  />
+                  <label for="agreement">
+                    I agree to the terms and conditions
+                  </label>
+                </div>
+
+                <!-- buttons  -->
+                <div class="container text-center">
+                  <button type="submit" class="btn bg-primary text-white">
+                    Submit
+                  </button>
+                  <button type="reset" class="btn btn-warning text-white">
+                    Reset
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
